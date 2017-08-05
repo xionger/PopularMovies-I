@@ -130,7 +130,7 @@ public class MovieGridFragment extends Fragment implements LoaderManager.LoaderC
         Log.d(LOG_TAG, "onCreateLoader starts with id: " + id);
         switch (id){
             case LOADER_ID: {
-                String sortOrder = MovieContract.MovieEntry.COLUMN_POP + " ASC";
+                String sortOrder = MovieContract.MovieEntry.COLUMN_POP + " DESC";
 
                 return new CursorLoader(
                         getActivity(),

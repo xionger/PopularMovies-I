@@ -19,6 +19,11 @@ import com.xiongxh.popularmovies.fragments.MovieGridFragment;
 import com.xiongxh.popularmovies.utilities.NetworkUtils;
 import com.xiongxh.popularmovies.utilities.ConstantsUtils;
 
+import butterknife.BindViews;
+import butterknife.ButterKnife;
+
+import java.util.List;
+
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
     private static final String TAG = MovieAdapter.class.getSimpleName();
@@ -98,18 +103,45 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
         mCursor.moveToPosition(position);
 
-        String movieTitle = mCursor.getString(ConstantsUtils.COLUMN_TITLE);
+        //String movieTitle = mCursor.getString(ConstantsUtils.COLUMN_TITLE);
+
+        //String moviePopular = mCursor.getString(ConstantsUtils.COLUMN_POP);
 
         String posterPath = mCursor.getString(ConstantsUtils.COLUMN_POSTER);
 
-        movieViewHolder.movieTitleView.setText(movieTitle);
+        //movieViewHolder.movieTitleView.setText(movieTitle);
+
+        //movieViewHolder.mMoviePopularView.setText(moviePopular);
 
         String posterUrl = NetworkUtils.IMAGE_BASE_URL + posterPath;
 
         Picasso.with(mContext).cancelRequest(movieViewHolder.moviePosterView);
-        Picasso.with(mContext).load(posterUrl).into(movieViewHolder.moviePosterView);
+        Picasso.with(mContext).load(posterUrl).resize(375, 600).into(movieViewHolder.moviePosterView);
 
         movieViewHolder.moviePosterView.setAdjustViewBounds(true);
+
+        String movieVote = mCursor.getString(ConstantsUtils.COLUMN_VOTESCORE);
+
+        movieViewHolder.mMovieVoteView.setText(movieVote);
+
+        if (movieVote != null && !movieVote.isEmpty()) {
+
+            float voteScore = Float.valueOf(movieVote)/2;
+
+            int voteScoreInt = (int) voteScore;
+
+            for (int i=0; i<voteScoreInt; i++){
+                movieViewHolder.mVoteStarsView.get(i).setImageResource(R.drawable.icon_star_filled_48);
+            }
+
+            if (Math.round(voteScore)>voteScoreInt){
+                movieViewHolder.mVoteStarsView.get(voteScoreInt).setImageResource(R.drawable.icon_star_half_empty_48);
+            }
+
+        } else {
+
+            movieViewHolder.mMovieVoteView.setVisibility(View.GONE);
+        }
         //}
 
 
@@ -141,12 +173,17 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         // Will display the position in the list, ie 0 through getItemCount() - 1
-        final TextView movieTitleView;
+        //final TextView movieTitleView;
+        final TextView mMovieVoteView;
+        //final TextView mMoviePopularView;
 
         // Will display which ViewHolder is displaying this data
         final ImageView moviePosterView;
 
         final CardView mCardView;
+
+        @BindViews({R.id.voting_first_star, R.id.voting_second_star, R.id.voting_third_star, R.id.voting_fourth_star, R.id.voting_fifth_star})
+        List<ImageView> mVoteStarsView;
 
         /**
          * Constructor for our ViewHolder. Within this constructor, we get a reference to our
@@ -158,10 +195,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         public MovieViewHolder(View itemView) {
             super(itemView);
 
-            movieTitleView = (TextView) itemView.findViewById(R.id.tv_movie_title);
+            ButterKnife.bind(this, itemView);
+
+            //movieTitleView = (TextView) itemView.findViewById(R.id.tv_movie_title);
+
+            mMovieVoteView = (TextView) itemView.findViewById(R.id.tv_movie_vote);
+
+            //mMoviePopularView = (TextView) itemView.findViewById(R.id.tv_movie_popular);
 
             // Use itemView.findViewById to get a reference to tv_view_holder_instance
             moviePosterView = (ImageView) itemView.findViewById(R.id.iv_movie_poster);
+
+            //ButterKnife.apply(mVoteStarsView);
 
             mCardView = (CardView) itemView.findViewById(R.id.card_view);
 

@@ -53,6 +53,8 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
     private ScrollView mMovieDetailLayout;
 
     private TextView mMovieTitleView;
+    private TextView mMovieVoteView;
+    private TextView mMovieReleaseDateView;
     private ImageView mPosterView;
     private ImageView mBackdropView;
     private TextView mMovieOverview;
@@ -87,6 +89,8 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
         //mMovieDetailAdapter = new MovieAdapter(getActivity());
 
         mMovieTitleView = (TextView) rootView.findViewById(R.id.tv_movie_detail_title);
+        mMovieVoteView = (TextView) rootView.findViewById(R.id.tv_movie_average_vote);
+        mMovieReleaseDateView = (TextView) rootView.findViewById(R.id.tv_movie_release_date);
         mPosterView = (ImageView) rootView.findViewById(R.id.iv_movie_detail_poster);
         mBackdropView = (ImageView) rootView.findViewById(R.id.iv_movie_detail_backdrop);
         mMovieOverview = (TextView) rootView.findViewById(R.id.tv_movie_overview);
@@ -151,6 +155,12 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
         String movieTitle = cursor.getString(ConstantsUtils.COLUMN_TITLE);
         mMovieTitleView.setText(movieTitle);
         Log.d(LOG_TAG, "Inside updateDetailView, movieTile: " + movieTitle);
+
+        String movieVote = cursor.getString(ConstantsUtils.COLUMN_VOTESCORE) + getString(R.string.average_rating_label);
+        mMovieVoteView.setText(movieVote);
+
+        String movieReleaseDate =  getString(R.string.release_date) + cursor.getString(ConstantsUtils.COLUMN_DATE);
+        mMovieReleaseDateView.setText(movieReleaseDate);
 
         String posterPath = cursor.getString(ConstantsUtils.COLUMN_POSTER);
 
