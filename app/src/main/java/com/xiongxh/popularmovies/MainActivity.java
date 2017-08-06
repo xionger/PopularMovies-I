@@ -34,15 +34,6 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        //MovieSyncTask.syncMovie(this);
-        //FakeMovieUtils.insertFakeData(this);
-
-//        if (savedInstanceState == null) {
-//            Log.d(LOG_TAG, "will call moviesGridFragment...");
-//            getSupportFragmentManager().beginTransaction()
-//                    .add(R.id.container, new MovieGridFragment())
-//                    .commit();
-//        }
         if (findViewById(R.id.movie_detail_container) != null){
             mTwoPane = true;
 

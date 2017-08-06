@@ -23,9 +23,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         PreferenceScreen prefScreen = getPreferenceScreen();
         int count = prefScreen.getPreferenceCount();
 
-        //PreferenceCategory prefCategory = (PreferenceCategory) findPreference(getString(R.string.category_settings_key));
-        //int count = prefCategory.getPreferenceCount();
-
         for (int i=0; i < count; i++){
             Preference p = prefScreen.getPreference(i);
             //Preference p = prefCategory.getPreference(i);
@@ -36,8 +33,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
             }
         }
 
-        //Preference preference = findPreference(getString(R.string.sorting_key));
-        //preference.setOnPreferenceChangeListener(this);
     }
 
     @Override

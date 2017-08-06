@@ -49,32 +49,8 @@ public class MovieDetailActivity extends AppCompatActivity{
                         .commit();
             }
 
-//            Bundle argsReview = new Bundle();
-//            //mMovieReviewUri = getIntent().getData();
-//
-//            String movieIdStr = mMovieDetailUri.getPathSegments().get(1);
-//
-//            mMovieReviewUri = Uri.parse("content://" + CONTENT_AUTHORITY + "/" + PATH_REVIEWS + "/" + movieIdStr);
-//
-//            argsReview.putParcelable(MovieReviewsFragment.DEFAULT_REVIEW_URI, mMovieReviewUri);
-//
-//            MovieReviewsFragment movieReviewsFragment = new MovieReviewsFragment();
-//            movieReviewsFragment.setArguments(argsReview);
-//
-//            Log.d(LOG_TAG, "Inside onCreate() method if block..., movieReviewUri: " + mMovieReviewUri);
-//
-//            if (mMovieReviewUri != null) {
-//                getSupportFragmentManager().beginTransaction()
-//                        .add(R.id.movie_review_container, movieReviewsFragment)
-//                        .commit();
-//            }
         }
     }
 
-//    @Override
-//    public void onSaveInstanceState(Bundle savedInstanceState){
-//        Log.d(LOG_TAG, "onSavedInstanceState");
-//        super.onSaveInstanceState(savedInstanceState);
-//    }
 
 }

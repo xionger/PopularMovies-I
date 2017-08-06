@@ -49,15 +49,6 @@ public class MovieGridFragment extends Fragment implements LoaderManager.LoaderC
         public void onItemSelected(Uri movieUri);
     }
 
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        Log.d(LOG_TAG, "MoviesGridFragment onCreate() called!");
-//        super.onCreate(savedInstanceState);
-//        if (savedInstanceState != null){
-//            return;
-//        }
-//    }
-
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
         Log.d(LOG_TAG, "MoviesGridFragment starts!");
@@ -107,19 +98,6 @@ public class MovieGridFragment extends Fragment implements LoaderManager.LoaderC
 
         mMoviesRecyclerView.setAdapter(mMovieAdapter);
 
-//        mMoviesRecyclerView.setOnClickListener(new AdapterView.OnItemClickListener(){
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l){
-//                Cursor cursor = (Cursor) adapterView.getItemAtPosition(position);
-//                if (cursor != null){
-//                    ((Callback) getActivity())
-//                            .onItemSelected(MovieContract.MovieEntry.buildMovieUri(cursor.getInt(COLUMN_MOVIE_ID)));
-//                    mPosition = position;
-//                }
-//            }
-//
-//        });
-
         Log.d(LOG_TAG, "onCreateView returning.");
 
         return rootView;
@@ -130,7 +108,7 @@ public class MovieGridFragment extends Fragment implements LoaderManager.LoaderC
         Log.d(LOG_TAG, "onCreateLoader starts with id: " + id);
         switch (id){
             case LOADER_ID: {
-                String sortOrder = MovieContract.MovieEntry.COLUMN_POP + " DESC";
+                //String sortOrder = MovieContract.MovieEntry.COLUMN_POP + " DESC";
 
                 return new CursorLoader(
                         getActivity(),
@@ -138,7 +116,8 @@ public class MovieGridFragment extends Fragment implements LoaderManager.LoaderC
                         ConstantsUtils.MOVIE_COLUMNS,
                         null,
                         null,
-                        sortOrder);
+                        //sortOrder);
+                        null);
             }
             default:{
                 throw  new RuntimeException("Loader not implemented: " + id);
@@ -160,38 +139,10 @@ public class MovieGridFragment extends Fragment implements LoaderManager.LoaderC
                 contentValuesVector.add(contentValues);
             } while (data.moveToNext());
 
-
-//        if (mMoviesAdapter != null){
-//            mMoviesAdapter.swapCursor(data);
-//        }
-//        if (mPosition == RecyclerView.NO_POSITION){
-//            mPosition = 0;
-//        }
-//        mMoviesRecyclerView.smoothScrollToPosition(mPosition);
-
             mMovieAdapter.swapCursor(data);
 
             //updateEmptyView();
 
-//            if (data.getCount() > 0) {
-//                mMoviesRecyclerView.getViewTreeObserver().addOnDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-//                    @Override
-//                    public boolean onPreDraw() {
-//                    if (mMoviesRecyclerView.getChildCount() > 0) {
-//                        mMoviesRecyclerView.getViewTreeObserver().removeOnPreDrawListener(this);
-//
-//                        GridLayoutManager gridLayoutManager = (GridLayoutManager) mMoviesRecyclerView.getLayoutManager();
-//                        int position = gridLayoutManager.findFirstCompletelyVisibleItemPosition();
-//
-//                        if (mPosition != RecyclerView.NO_POSITION && position != mPosition) {
-//                            mMoviesRecyclerView.scrollToPosition(mPosition);
-//                        }
-//                    }
-//                        //return false;
-//                        return false;
-//                    }
-//                });
-//            }
         }
 
         Log.d(LOG_TAG, "onLoadFinished: count is: " + mMovieAdapter.getItemCount());
@@ -203,11 +154,6 @@ public class MovieGridFragment extends Fragment implements LoaderManager.LoaderC
         Log.d(LOG_TAG, "onLoaderReset");
         mMovieAdapter.swapCursor(null);
     }
-
-//    @Override
-//    public void onSaveInstanceState(Bundle outState){
-//        super.onSaveInstanceState(outState);
-//    }
 
     @Override
     public void onResume(){

@@ -9,34 +9,29 @@
         android:id="@+id/voting_first_star"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:src="@drawable/icon_star_empty_48"
         android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/voting_second_star"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:src="@drawable/icon_star_empty_48"
         android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/voting_third_star"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:src="@drawable/icon_star_empty_48"
         android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/voting_fourth_star"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:src="@drawable/icon_star_empty_48"
         android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/voting_fifth_star"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:src="@drawable/icon_star_empty_48"
         android:scaleType="fitXY"/>
 </LinearLayout>

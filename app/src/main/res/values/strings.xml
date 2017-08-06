@@ -6,8 +6,8 @@
 
     <string name="popular_movie_value">Popular</string>
     <string name="sorting_key" translatable="false">Sorting</string>
-    <string name="sorting_by_pop">By popularity</string>
-    <string name="sorting_by_rate">By rate</string>
+    <string name="sorting_by_pop">Most Popular</string>
+    <string name="sorting_by_rate">Highest rated</string>
     <string name="sorting_by_pop_value">popularity.desc</string>
     <string name="sorting_by_rate_value">vote_average.desc</string>
 

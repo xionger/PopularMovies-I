@@ -103,7 +103,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
         mCursor.moveToPosition(position);
 
-        //String movieTitle = mCursor.getString(ConstantsUtils.COLUMN_TITLE);
+        String movieTitle = mCursor.getString(ConstantsUtils.COLUMN_TITLE);
 
         //String moviePopular = mCursor.getString(ConstantsUtils.COLUMN_POP);
 
@@ -124,6 +124,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
         movieViewHolder.mMovieVoteView.setText(movieVote);
 
+        for (int i=0; i<5; i++){
+            movieViewHolder.mVoteStarsView.get(i).setImageResource(R.drawable.icon_star_empty_48);
+        }
+
         if (movieVote != null && !movieVote.isEmpty()) {
 
             float voteScore = Float.valueOf(movieVote)/2;
@@ -131,10 +135,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             int voteScoreInt = (int) voteScore;
 
             for (int i=0; i<voteScoreInt; i++){
+
                 movieViewHolder.mVoteStarsView.get(i).setImageResource(R.drawable.icon_star_filled_48);
             }
 
             if (Math.round(voteScore)>voteScoreInt){
+
                 movieViewHolder.mVoteStarsView.get(voteScoreInt).setImageResource(R.drawable.icon_star_half_empty_48);
             }
 
@@ -142,8 +148,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
             movieViewHolder.mMovieVoteView.setVisibility(View.GONE);
         }
-        //}
-
 
     }
 

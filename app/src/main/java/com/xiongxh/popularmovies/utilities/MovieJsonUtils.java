@@ -59,11 +59,6 @@ public class MovieJsonUtils {
             double voteScore;
             double moviePopularity;
 
-            //get single earthquake at position i with the list of earthquakes
-            //JSONObject currentNews = movieArray.getJSONObject(i);
-
-            // For now, using the format "Day, description, hi/low"
-
 
             // Get the JSON object representing the day
             JSONObject movieObject = movieArray.getJSONObject(i);
@@ -81,14 +76,6 @@ public class MovieJsonUtils {
             voteScore = movieObject.getDouble(MDB_VOTESCORE);
             moviePopularity = movieObject.getDouble(MDB_POPULARITY);
 
-            //create a new {@link Movie} object with the magnitude, location, time,
-            // and url from JSON response
-
-            //Movie movie = new Movie(movieTitle, movieId, posterPath, voteNumber, voteScore, releaseTime);
-            //Earthquake earthquake = new Earthquake(magnitude, location, time, url);
-
-            //add the new {@link Earthquake} to the list of earthquakes
-            //movies.add(movie);
 
             ContentValues movieValues = new ContentValues();
 

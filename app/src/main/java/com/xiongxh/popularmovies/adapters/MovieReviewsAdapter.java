@@ -91,32 +91,3 @@ public class MovieReviewsAdapter extends RecyclerView.Adapter<MovieReviewsAdapte
     }
 }
 
-//public class MovieReviewsAdapter extends CursorAdapter{
-//    private final String LOG_TAG = MovieReviewsAdapter.class.getSimpleName();
-//
-//    public MovieReviewsAdapter(Context context, Cursor cursor, int flag){
-//        super(context, cursor, flag);
-//    }
-//
-//    @Override
-//    public View newView(Context context, Cursor cursor, ViewGroup parent){
-//        Log.d(LOG_TAG, "Entering newView...");
-//        View view = LayoutInflater.from(context).inflate(R.layout.list_item_review, parent, false);
-//
-//        return view;
-//    }
-//
-//    @Override
-//    public void bindView(View view, Context context, Cursor cursor){
-//        Log.d(LOG_TAG, "Entering bindView...");
-//        TextView movieReviewContent = (TextView) view.findViewById(R.id.tv_movie_review_content);
-//        Log.d(LOG_TAG, "1: Error here?");
-//        movieReviewContent.setText(cursor.getString(ConstantsUtils.COLUMN_REVIEW_CONTENT));
-//        Log.d(LOG_TAG, "2: Error here?");
-//
-//        TextView movieReviewAuthor = (TextView) view.findViewById(R.id.tv_movie_review_author);
-//        Log.d(LOG_TAG, "3: Error here?");
-//        movieReviewAuthor.setText(cursor.getString(ConstantsUtils.COLUMN_REVIEW_AUTHOR));
-//        Log.d(LOG_TAG, "Exit bindView.");
-//    }
-//}

@@ -88,11 +88,7 @@ public class MovieProvider extends ContentProvider {
                 String movieIndexStr = uri.getPathSegments().get(1);
                 String mSelection = "_id=?";
                 String[] mSelectionArgs = new String[]{movieIndexStr};
-//                Log.d(LOG_TAG, "table: " + MovieEntry.TABLE_NAME);
-//                Log.d(LOG_TAG, "projection[0]: " + projection[0]);
-//                Log.d(LOG_TAG, "selection: " + mSelection);
-//                Log.d(LOG_TAG, "selectionargs[0]: " + mSelectionArgs[0]);
-//                Log.d(LOG_TAG, "sortOder: " + sortOrder);
+
                 returnCursor = db.query(
                         MovieEntry.TABLE_NAME,
                         projection,
@@ -144,20 +140,6 @@ public class MovieProvider extends ContentProvider {
                 break;
 
             }
-
-//            case MOVIE_ID: {
-//                String movieId = MovieContract.MovieEntry.getMovieIdFromUri(uri);
-//
-//                returnCursor = mOpenHelper.getReadableDatabase().query(
-//                        MovieContract.MovieEntry.TABLE_NAME,
-//                        projection,
-//                        MovieContract.MovieEntry.TABLE_NAME + "." + MovieContract.MovieEntry.COLUMN_MOVIE_ID + "=?",
-//                        new String[]{movieId},
-//                        null,
-//                        null,
-//                        sortOrder);
-//                break;
-//            }
 
             default: {
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
@@ -394,16 +376,7 @@ public class MovieProvider extends ContentProvider {
                         mSelectionArgs);
                 break;
             }
-//            case MOVIE_ID: {
-//                String movieIdString = MovieContract.MovieEntry.getMovieIdFromUri(uri);
-//                selectionCriteria = MovieContract.MovieEntry._ID + "=" + movieIdString;
-//
-//                if (selection != null && selection.length()>0){
-//                    selectionCriteria += " AND (" + selection + ")";
-//                }
-//                rowsUpdated = db.update(MovieContract.MovieEntry.TABLE_NAME, contentValues, selectionCriteria, selectionArgs);
-//                break;
-//            }
+
             default: {
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
             }

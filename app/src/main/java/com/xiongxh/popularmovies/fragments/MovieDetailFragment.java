@@ -200,16 +200,7 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
                         null
                 );
             }
-//            case REVIEW_LOADER_ID: {
-//                Log.d(LOG_TAG, "Entering case: REVIEW_LOADER_ID");
-//                return new CursorLoader(
-//                        getActivity(),
-//                        mMovieReviewsUri,
-//                        ConstantsUtils.MOVIE_REVIEW_COLUMNS,
-//                        null,
-//                        null,
-//                        null);
-//            }
+
             default:{
                 throw new RuntimeException("Loader not implemented: " + loaderId);
             }

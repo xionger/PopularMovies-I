@@ -21,7 +21,8 @@ import java.net.URL;
 public class NetworkUtils {
 
     private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
-    private static final String SEARCH_BASE_URL = "https://api.themoviedb.org/3/search/movie?api_key={key}&query={David}";
+
+    //private static final String SEARCH_BASE_URL = "https://api.themoviedb.org/3/search/movie?api_key={key}&query={David}";
 
     private static final String BASE_URL = "https://api.themoviedb.org/3/discover/movie?";
 
@@ -31,27 +32,7 @@ public class NetworkUtils {
 
     private static final String API_KEY_PARAM = "api_key";
 
-    /*
-    public static URL getUrlSortByPop(){
 
-        final String SORT_BY_PARAM = "sort_by";
-        //final String SORT_METHOD = "popularity.desc";
-        final String SORT_METHOD = "vote_average.desc";
-
-        Uri buildUri = Uri.parse(BASE_URL).buildUpon()
-                .appendQueryParameter(SORT_BY_PARAM, SORT_METHOD)
-                .appendQueryParameter(API_KEY_PARAM, BuildConfig.MOVIE_DB_API_KEY)
-                .build();
-        try {
-            URL url = new URL(buildUri.toString());
-            Log.d(LOG_TAG, "Calling url: " + url);
-            return url;
-        }catch (MalformedURLException e){
-            Log.e(LOG_TAG, "Error", e);
-            return null;
-        }
-    }
-    */
     public static URL getUrl(Context context){
         String sortStr = MoviePreferences.getPreferredSortType(context);
         //String sortStr = MoviePreferences.sortType;
@@ -60,8 +41,15 @@ public class NetworkUtils {
 
     private static URL buildUrlWithQuery(String sortType){
         final String SORT_BY_PARAM = "sort_by";
+        final String RELEASE_DATE_PARAM = "primary_release_date.gte";
+        final String release_after = "2015-01-01";
+        final String VOTE_COUNT_PARAM = "vote_count.gte";
+        final String vote_count_threshold = "100";
+
         Uri buildUri = Uri.parse(BASE_URL).buildUpon()
                 .appendQueryParameter(SORT_BY_PARAM, sortType)
+                .appendQueryParameter(RELEASE_DATE_PARAM, release_after)
+                .appendQueryParameter(VOTE_COUNT_PARAM, vote_count_threshold)
                 .appendQueryParameter(API_KEY_PARAM, BuildConfig.MOVIE_DB_API_KEY)
                 .build();
         try {
