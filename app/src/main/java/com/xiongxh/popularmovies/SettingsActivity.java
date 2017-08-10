@@ -1,9 +1,13 @@
 package com.xiongxh.popularmovies;
 
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -16,8 +20,11 @@ public class SettingsActivity extends AppCompatActivity {
 
         if (actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
+
         }
+
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){

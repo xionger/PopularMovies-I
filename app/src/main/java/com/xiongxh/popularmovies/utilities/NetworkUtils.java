@@ -24,7 +24,13 @@ public class NetworkUtils {
 
     //private static final String SEARCH_BASE_URL = "https://api.themoviedb.org/3/search/movie?api_key={key}&query={David}";
 
-    private static final String BASE_URL = "https://api.themoviedb.org/3/discover/movie?";
+    //private static final String BASE_URL = "https://api.themoviedb.org/3/discover/movie?";
+
+    private static String BASE_URL;
+
+    private static final String BASE_URL_POPULAR = "https://api.themoviedb.org/3/movie/popular?";
+
+    private static final String BASE_URL_TOP_RATED = "https://api.themoviedb.org/3/movie/top_rated?";
 
     private static final String BASE_ITEM_URL = "https://api.themoviedb.org/3/movie/";
 
@@ -40,6 +46,7 @@ public class NetworkUtils {
     }
 
     private static URL buildUrlWithQuery(String sortType){
+        /**
         final String SORT_BY_PARAM = "sort_by";
         final String RELEASE_DATE_PARAM = "primary_release_date.gte";
         final String release_after = "2015-01-01";
@@ -52,6 +59,17 @@ public class NetworkUtils {
                 .appendQueryParameter(VOTE_COUNT_PARAM, vote_count_threshold)
                 .appendQueryParameter(API_KEY_PARAM, BuildConfig.MOVIE_DB_API_KEY)
                 .build();
+         */
+        if (sortType.equals("top_rated")){
+            BASE_URL = BASE_URL_TOP_RATED;
+        } else {
+            BASE_URL = BASE_URL_POPULAR;
+        }
+
+        Uri buildUri = Uri.parse(BASE_URL).buildUpon()
+                .appendQueryParameter(API_KEY_PARAM, BuildConfig.MOVIE_DB_API_KEY)
+                .build();
+
         try {
             URL url = new URL(buildUri.toString());
             Log.d(LOG_TAG, "Calling url: " + url);

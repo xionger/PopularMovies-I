@@ -20,6 +20,11 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+
+import butterknife.BindView;
+import butterknife.BindViews;
+import butterknife.ButterKnife;
+
 import com.xiongxh.popularmovies.MovieDetailActivity;
 import com.xiongxh.popularmovies.MovieReviewsActivity;
 import com.xiongxh.popularmovies.MovieTrailersActivity;
@@ -49,9 +54,8 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
     private Uri mMovieTrailersUri;
     private Cursor mCursor = null;
 
-
+    /**
     private ScrollView mMovieDetailLayout;
-
     private TextView mMovieTitleView;
     private TextView mMovieVoteView;
     private TextView mMovieReleaseDateView;
@@ -60,6 +64,16 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
     private TextView mMovieOverview;
     private Button mReviewButton;
     private Button mTrailerButton;
+     */
+    @BindView(R.id.movie_detail_layout) ScrollView mMovieDetailLayout;
+    @BindView(R.id.tv_movie_detail_title) TextView mMovieTitleView;
+    @BindView(R.id.tv_movie_average_vote) TextView mMovieVoteView;
+    @BindView(R.id.tv_movie_release_date) TextView mMovieReleaseDateView;
+    @BindView(R.id.iv_movie_detail_poster) ImageView mPosterView;
+    @BindView(R.id.iv_movie_detail_backdrop) ImageView mBackdropView;
+    @BindView(R.id.tv_movie_overview) TextView mMovieOverview;
+    @BindView(R.id.button_read_reviews) Button mReviewButton;
+    @BindView(R.id.button_watch_trailers) Button mTrailerButton;
 
     private ListView mReviewsView;
 
@@ -84,20 +98,22 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
 
         View rootView = inflater.inflate(R.layout.fragment_movie_detail, container, false);
 
-        mMovieDetailLayout = (ScrollView) rootView.findViewById(R.id.movie_detail_layout);
+        ButterKnife.bind(this, rootView);
+
+        //mMovieDetailLayout = (ScrollView) rootView.findViewById(R.id.movie_detail_layout);
 
         //mMovieDetailAdapter = new MovieAdapter(getActivity());
 
-        mMovieTitleView = (TextView) rootView.findViewById(R.id.tv_movie_detail_title);
-        mMovieVoteView = (TextView) rootView.findViewById(R.id.tv_movie_average_vote);
-        mMovieReleaseDateView = (TextView) rootView.findViewById(R.id.tv_movie_release_date);
-        mPosterView = (ImageView) rootView.findViewById(R.id.iv_movie_detail_poster);
-        mBackdropView = (ImageView) rootView.findViewById(R.id.iv_movie_detail_backdrop);
-        mMovieOverview = (TextView) rootView.findViewById(R.id.tv_movie_overview);
+        //mMovieTitleView = (TextView) rootView.findViewById(R.id.tv_movie_detail_title);
+        //mMovieVoteView = (TextView) rootView.findViewById(R.id.tv_movie_average_vote);
+        //mMovieReleaseDateView = (TextView) rootView.findViewById(R.id.tv_movie_release_date);
+        //mPosterView = (ImageView) rootView.findViewById(R.id.iv_movie_detail_poster);
+        //mBackdropView = (ImageView) rootView.findViewById(R.id.iv_movie_detail_backdrop);
+        //mMovieOverview = (TextView) rootView.findViewById(R.id.tv_movie_overview);
 
         //mReviewsView = (ListView) rootView.findViewById(R.id.lv_movie_reviews);
 
-        mReviewButton = (Button) rootView.findViewById(R.id.button_read_reviews);
+        //mReviewButton = (Button) rootView.findViewById(R.id.button_read_reviews);
         mReviewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,7 +133,7 @@ public class MovieDetailFragment extends Fragment implements LoaderManager.Loade
             }
         });
 
-        mTrailerButton = (Button) rootView.findViewById(R.id.button_watch_trailers);
+        //mTrailerButton = (Button) rootView.findViewById(R.id.button_watch_trailers);
         mTrailerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
