@@ -20,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.xiongxh.popularmovies.R;
+import com.xiongxh.popularmovies.SettingsActivity;
 import com.xiongxh.popularmovies.adapters.MovieAdapter;
 import com.xiongxh.popularmovies.data.MovieContract;
 import com.xiongxh.popularmovies.utilities.ConstantsUtils;
@@ -55,8 +56,6 @@ public class MovieGridFragment extends Fragment implements LoaderManager.LoaderC
         super.onActivityCreated(savedInstanceState);
         //FakeMovieUtils.insertFakeData(getActivity());
         getLoaderManager().initLoader(LOADER_ID, null, this);
-
-
     }
 
     @Override
@@ -157,8 +156,10 @@ public class MovieGridFragment extends Fragment implements LoaderManager.LoaderC
 
     @Override
     public void onResume(){
-
-        Log.d(LOG_TAG, "onResume");
         super.onResume();
+        if (mMovieAdapter.getItemCount() == 0 || SettingsFragment.mPreferenceChanged){
+            MovieSyncUtils.startImmediateSync(getActivity());
+        }
+
     }
 }

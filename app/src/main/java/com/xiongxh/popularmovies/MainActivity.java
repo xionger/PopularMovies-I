@@ -110,7 +110,6 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
     }
 
-    //TODO implement this method
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 

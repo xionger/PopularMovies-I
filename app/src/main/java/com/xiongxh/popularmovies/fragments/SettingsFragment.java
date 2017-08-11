@@ -15,6 +15,8 @@ import com.xiongxh.popularmovies.R;
 
 public class SettingsFragment extends PreferenceFragmentCompat implements OnSharedPreferenceChangeListener {
 
+    public static boolean mPreferenceChanged = false;
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.pref_settings);
@@ -30,6 +32,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
             if (!(p instanceof CheckBoxPreference)){
                 String value = sharedPreferences.getString(p.getKey(), "");
                 setPreferenceSummary(p, value);
+
             }
         }
 
@@ -48,6 +51,8 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
             if (!(preference instanceof CheckBoxPreference)){
                 String value = sharedPreferences.getString(preference.getKey(), "");
                 setPreferenceSummary(preference, value);
+
+                mPreferenceChanged = true;
             }
         }
     }
